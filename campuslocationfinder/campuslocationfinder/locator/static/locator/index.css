@@ -1,0 +1,75 @@
+.header {
+background-color: #ffffff;
+height: 100px
+width: 100%
+}
+
+.desktop-1{
+position: absolute:
+background-color: #ffffff;
+width: 100%
+}
+
+.herosect{
+background-image: liner-gradient(#0056A5, #49A7FE, #ffffff);
+background-size: cover;
+height:941px;
+width: 100%;
+position: absolute;
+top: 0px;
+left: 0px;
+align-items: center;
+text-align: center;
+}
+
+.hrtxt1{
+color: #ffffff
+text-align: left;
+vertical-align: text-top;
+font-size:128px;
+font-family:Poppins
+left:416px;
+top:182px;
+width: 606px;
+height: 192px;
+position: absolute;
+line-height:auto;
+border-style: hidden;
+outline:none;
+}
+
+.hrtxt2{
+color: #ffffff
+align: center;
+text-align: left;
+vertical-align: text-top;
+font-size:64px;
+font-family:Poppins
+left:333px;
+top:378px;
+width: 772px;
+height: 96px;
+position: absolute;
+line-height:auto;
+border-style: hidden;
+outline:none;
+}
+
+
+.hrtxt3{
+color: #ffffff
+font-size:64px;
+font-family:Poppins
+left:252px;
+top:470px;
+width: 934px;
+height: 288px;
+position: absolute;
+line-height:auto;
+border-style: hidden;
+outline:none;
+}
+
+.form_section{
+top: 942px;
+}
