@@ -1,8 +1,37 @@
 import gmaps.datasets
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 from django.http import JsonResponse
 import requests
+from django.contrib.auth import authenticate, login
+from .forms import LoginForm, RegistrationForm
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(homepage)  # Replace 'home' with the URL name of your home page
+    else:
+        form = RegistrationForm()
+    return render(request, 'locator/signup.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect(homepage)  # Replace 'home' with the URL name of your home page
+    else:
+        form = LoginForm()
+    return render(request, 'locator/login.html', {'form': form})
 
 
 def debug_view(request):
@@ -62,6 +91,7 @@ def fetch_directions_from_api(origin, destination):
     data = response.json()
 
     return data
+
 
 def index(request):
     if request.method == 'GET':

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 'geoposition',
     'locator',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -112,9 +114,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    # Add other authentication backends as needed
+)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyARmKpW6QqvLco6sFwFz8ufnaA_FgHplzw'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
