@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import requests
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, RegistrationForm
+from .models import Building
 
 
 def signup_view(request):
@@ -94,9 +95,11 @@ def fetch_directions_from_api(origin, destination):
 
 
 def index(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         # Fetch the JSON data from the debug view.
-        debug_view_response = debug_view(request)
+        origin = request.POST.get('origin')
+        destination = request.POST.get('destination')
+        """debug_view_response = debug_view(request)
 
         # Check if the debug view returned an error.
         if debug_view_response.status_code == 400:
@@ -107,22 +110,28 @@ def index(request):
 
         # Extract origin and destination from the parsed data.
         origin = data.get("origin")
-        destination = data.get("destination")
+        destination = data.get("destination")"""
 
         print(origin)
         print(destination)
         if origin and destination:
-            directions_data = fetch_directions_from_api(origin, destination)
-            response_data = f"updateMapWithDirections({json.dumps(directions_data)});"
-            return JsonResponse(data)
+            # directions_data = fetch_directions_from_api(origin, destination)
+            # response_data = json.dumps(directions_data)
+            context_data = {'origin': origin,
+                            'destination': destination}
+            context_json = json.dumps(context_data)
+            return render(request, 'locator/map.html', {'context':context_json})
         else:
             return JsonResponse({'error': 'Origin and destination are required.'}, status=400)
 
     return JsonResponse({'error': 'Invalid request method.'}, status=405)
 
-
 def debug_view(request):
     return JsonResponse(request.GET)
 
 def homepage(request):
-    return render(request, 'locator/index.html')
+    building = Building.objects.all()
+    context = {
+        "building":building
+    }
+    return render(request, 'locator/index.html', context=context)

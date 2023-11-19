@@ -34,14 +34,24 @@
         </div>
         <h1 class="text-center" style="font-size:64px; font-family:Poppins;">Get Directions</h1>
         <div class="container">
-            <form action="{% url 'index' %}" method="GET">
+            <form action="{% url 'map' %}" method="POST">
                 {% csrf_token %}
                 <div class="row gy-3">
                     <div class="col">
-                        <input aria-label="origin" class="form-control" id="origin" name="origin" placeholder="Origin" type="text" value="{{ origin }}">
+                        <!-- <input aria-label="origin" class="form-control" id="origin" name="origin" placeholder="Origin" type="text" value="{{ origin }}"> -->
+                        <select class="form-select form-select-sm" aria-label="Small select example" id="origin" name="origin">
+                            {% for location in building %}
+                                <option value="{{ location.address }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="col">
-                        <input aria-label="destination" class="form-control" id="destination" name="destination" placeholder="Destination" type="text" value="{{ destination }}">
+                       <!-- <input aria-label="destination" class="form-control" id="destination" name="destination" placeholder="Destination" type="text" value="{{ destination }}"> -->
+                       <select class="form-select form-select-sm" aria-label="Small select example" id="destination" name="destination">
+                            {% for location in building %}
+                                <option value="{{ location.address }}">{{ location.name }}</option>
+                            {% endfor %}
+                       </select>
                     </div>
                     <div class="col-12">
                         <button class="btn btn-primary" id="getDirection"  type="submit">Get Directions</button>
