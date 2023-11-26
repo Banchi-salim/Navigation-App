@@ -13,23 +13,23 @@
 </head>
 <body class="container-fluid">
     <nav class="navbar navbar-light" style="background-color: #e3f2fd; width:100%;">
-        <h1 style="text-align: left; vertical-align: center">Campus Location Finder</h1>
-
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'locator/images/logo.png'%}" style="width:70px; height:50px; padding-left:20px;">
+        </a>
     </nav>
     <div class="row">
 
     </div>
 
-    <section class="row-1">
-        <div class="herosect" id="herosect"
-             style="background-image: liner-gradient(#0056A5, #49A7FE, #ffffff); background-size: cover; height:600px; width: 100%;">
+    <section class="grid gap-0 row-gap-6">
+        <div class="herosect" style="background-image: linear-gradient( 180.7deg,  rgba(0,213,255,1) 2.5%, rgba(79,255,255,1) 97.7% ); margin-bottom: 10px;" >
             <h1 class="text-center" id="hrtxt1" style="font-size:160px; font-family:Poppins; align:center">Navigate</h1>
             <h2 class="text-center" id="hrtxt2" style="font-size:84px; font-family:Poppins; align:center">Your Campus With
                 Ease</h2>
             <h2 class="text-center" id="hrtxt3" style="font-size:84px; font-family:Poppins; align:center">Discover Buildings
                 Effortlessly With Campus Guide</h2>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-bottom: 20px;">
             <div class="col">
                 <div class="card h-100">
           <img src="{% static 'locator/images/senate.jpg' %}" class="card-img-top" alt="...">
