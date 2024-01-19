@@ -4,7 +4,7 @@ let directionsRenderer, directionsService
 // Define the initMap function for initializing the Google Map.
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 8.98921, lng: 7.18141 },
+        center: { lat: 8.9807, lng: 7.1805 },
         zoom: 6 // Adjust the zoom level as needed
     });
      var startpointautocomplete = new google.maps.places.Autocomplete(
